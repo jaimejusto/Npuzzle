@@ -73,7 +73,6 @@ class PuzzleGame:
         self.game_board = PuzzleBoard()
         self.game_state = 'Not Solved'
 
-
     def get_move(self, tile):
         row_tile, col_tile = [int(x) for x in tile]
 

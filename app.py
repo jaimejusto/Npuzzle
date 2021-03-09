@@ -8,10 +8,6 @@ import puzzleEngine
 app = Flask(__name__)
 game = puzzleEngine.PuzzleGame()
 
-
-def restart_game():
-    game.new_game()
-
 # Routes
 @app.route('/', methods=['POST', 'GET'])
 def root():
