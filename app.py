@@ -8,6 +8,9 @@ import puzzleEngine
 app = Flask(__name__)
 game = puzzleEngine.PuzzleGame()
 
+def shuffle_board():
+    game.new_game()
+
 # Routes
 @app.route('/', methods=['POST', 'GET'])
 def root():
@@ -31,7 +34,8 @@ def root():
 
             return render_template('main.j2', board=game_board)
         if game_state == "Solved":
-            return "Solved!"
+            solved_msg = 'You solved the puzzle!'
+            return render_template('main.j2', board=game_board, msg=solved_msg)
 
     else:
         game_board = game.get_game_board()
@@ -40,7 +44,7 @@ def root():
 
 @app.route('/newGame/')
 def newGame():
-    game.new_game()
+    shuffle_board()
     return redirect(url_for('root'))
 
 @app.route('/verify/', methods=['POST', 'GET'])
