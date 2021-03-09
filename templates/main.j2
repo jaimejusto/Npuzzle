@@ -1,0 +1,19 @@
+{% extends 'baseLayout.j2' %}
+
+{% block content %}
+<div id='tile_grid'>
+    <table>
+        {% for i in range(3) %}
+        <tr>
+            {% for j in range(3) %}
+                <form action='/' method='POST'><td><button type='submit' class='btn btn-warning' value={{i}}{{j}} name='move'>{% if board[i][j] != 0 %} {{ board[i][j] }} {% else %} _ {% endif %}</td></form>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% if msg %}
+        {{ msg }}
+    {% endif %}
+</div>
+{% endblock %}

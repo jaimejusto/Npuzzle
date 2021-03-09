@@ -1,0 +1,17 @@
+{% extends 'baseLayout.j2' %}
+
+{% block content %}
+<h1>Verify a Solution</h1>
+<div id='verification_form'>
+    <form action='/verify/' method='POST'>
+        <label for='cert'>Enter a proposed solution (e.g., 2, 3, 1, 4, 6, 7, 8, 0)</label><br>
+        <input type='text' name='cert'>
+        <input type='submit' value='Verify'>
+    </form>
+
+    {% if results %}
+        {{ results }}
+    {% endif %}
+</div>
+{% endblock %}
+
